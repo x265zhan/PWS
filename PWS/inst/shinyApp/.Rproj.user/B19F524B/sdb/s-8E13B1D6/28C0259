@@ -1,0 +1,18 @@
+{
+    "contents" : "#' Run the test shiny app\n#' @description Runs a shiny app for a graphical user interface example\n#' @export\n#' @importFrom shiny runApp\ntestApp <- function() {\n  shiny::runApp(system.file(\"shinyApp\", package = \"PWS\"))\n}",
+    "created" : 1458754351013.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1177810893",
+    "id" : "28C0259",
+    "lastKnownWriteTime" : 1458754379,
+    "path" : "~/Documents/stat290/project/PWS/R/testApp.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

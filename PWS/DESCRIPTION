@@ -1,0 +1,20 @@
+Package: PWS
+Title: Personal Weather Station
+Version: 1.0
+Authors@R: c(person(given = "Mengyi", family = "Gao", email = "m1gao@stanford.edu",role = c("aut", "cre")), person(given = "Xiang",family = "Zhang",email = "x265zhan@stanford.edu", role = c("aut")))
+Description: Extract, organize, visualize and model local weather data. User can use this package to compare data at nearby personal weather stations to show microclimate patterns.
+Depends: R (>= 3.2.3)
+License: GPL (>= 2)
+LazyData: true
+Imports:
+    ggplot2,
+    ggmap,
+    methods,
+    ggrepel,
+    reshape2,
+    httr,
+    jsonlite,
+    shiny
+Suggests:
+    testthat
+RoxygenNote: 5.0.1

@@ -1,0 +1,17 @@
+{
+    "contents" : "\n# This is the user-interface definition of a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n#\n\nlibrary(shiny)\n\nshinyUI(fluidPage(\n\n  # Application title\n  titlePanel(\"Personal Weather Station\"),\n\n  # Sidebar with a slider input for number of bins\n  sidebarLayout(\n    sidebarPanel(\n      numericInput(\"lat\", \"Latitude\", value = NA),\n      numericInput(\"lon\", \"Longitude\", value = NA),\n      numericInput(\"zipcode\", \"Zipcode\", value = NA),\n      textInput(\"city\", \"City\", value = NA),\n      textInput(\"state\", \"State\", value = NA),\n      textInput(\"country\", \"Country\", value = NA),\n      numericInput(\"distance\", \"Distance\", 50),\n      actionButton(\"getpwsButton\", \"Get Nearby PWS\", style = \"color: #ffffff; background-color: #66a3ff\"),\n      br(),\n      br(),\n      actionButton(\"getcurrentButton\", \"Get Current Weather\", style = \"color: #ffffff; background-color: #66a3ff\"),\n      br(),\n      br(),\n      selectInput(\"weather\", \"Weather Variable to Plot\", c('Temperature', 'Humidity', 'Windspeed', 'Pressure')),\n      textInput(\"starttime\", \"From: (HH:MM)\", value = \"1:00\"),\n      textInput(\"endtime\", \"To: (HH:MM)\", value = \"12:00\"),\n      actionButton(\"getweatherButton\", \"Plot Weather in Specified Time Range\", style = \"color: #ffffff; background-color: #66a3ff\")\n      ),\n\n    # Show generated plots\n    mainPanel(\n      plotOutput(\"pwsPlot\"),\n      plotOutput(\"currentPlot\"),\n      plotOutput(\"weatherPlot\")\n    )\n  )\n))\n",
+    "created" : 1458754284835.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1517344050",
+    "id" : "8B132DA2",
+    "lastKnownWriteTime" : 1458761217,
+    "path" : "~/Documents/stat290/project/PWS/inst/shinyApp/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

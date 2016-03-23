@@ -1,0 +1,17 @@
+{
+    "contents" : "library(roxygen2)\nlibrary(devtools)\n\n\nauthor2 <- utils::person(given = \"Xiang\",\n                        family = \"Zhang\",\n                        email = \"x265zhan@stanford.edu\",\n                        role = c(\"aut\"))\n\nauthor1 <- utils::person(given = \"Mengyi\",\n                         family = \"Gao\",\n                         email = \"m1gao@stanford.edu\",\n                         role = c(\"aut\", \"cre\"))\n\nauthor1_at_r <- paste0(\n  \"person(given = \",\n  deparse(author1$given),\n  \", family = \",\n  deparse(author1$family),\n  \", role = \",\n  deparse(author1$role),\n  \", email = \",\n  deparse(author1$email),\n  \")\"\n)\n\nauthor2_at_r <- paste0(\n  \"person(given = \",\n  deparse(author2$given),\n  \", family = \",\n  deparse(author2$family),\n  \", role = \",\n  deparse(author2$role),\n  \", email = \",\n  deparse(author2$email),\n  \")\"\n)\n\noptions(repos = list(CRAN=\"http://cloud.r-project.org\"),\n        ##BioC_mirror = \"http://www.bioconductor.org\",\n        pdfviewer=\"/Applications/SiteApps/Skim.app/Contents/MacOS/Skim\",\n        browserNLdisabled = TRUE,\n        deparse.max.lines = 2,\n        ## devtools stuff\n        ##devtools.name = \"Xiang Zhang\",\n        devtools.desc.author = author1_at_r,\n        devtools.desc.license = \"GPL (>= 2)\")\n\ncreate(path=\"PWS\", rstudio=FALSE)\nuse_package(package = \"ggplot2\", pkg = \"PWS\")\nuse_package(package = \"ggmap\", pkg = \"PWS\")\nuse_package(package = \"methods\", pkg = \"PWS\")\nuse_package(package = \"ggrepel\", pkg = \"PWS\")\nuse_package(package = \"reshape2\", pkg = \"PWS\")\nuse_package(package = \"httr\", pkg = \"PWS\")\nuse_package(package = \"jsonlite\", pkg = \"PWS\")\nuse_package(package = \"shiny\", pkg = \"PWS\")\n\nofflineExample <- readRDS('offlineExample.RDS')\nofflineWeather <- readRDS('offlineWeather.RDS')\ndevtools::use_data(offlineExample, pkg = 'PWS')\ndevtools::use_data(offlineWeather, pkg = 'PWS')\ndevtools::use_testthat('PWS')\ndevtools::document(pkg = 'PWS')\ndevtools::load_all(pkg = 'PWS')\ndevtools::install(pkg = 'PWS')\ndevtools::use_vignette(\"summary\", \"PWS\")\ndevtools::test(\"PWS\")\n\ndevtools::build(\"PWS\")\n\ndevtools::uninstall(\"PWS\")\n",
+    "created" : 1458771058063.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "877737517",
+    "id" : "25239004",
+    "lastKnownWriteTime" : 1458771465,
+    "path" : "~/Documents/stat290/project/mypack/generate.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

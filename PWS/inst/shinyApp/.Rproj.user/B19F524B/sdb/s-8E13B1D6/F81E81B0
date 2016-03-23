@@ -1,0 +1,17 @@
+{
+    "contents" : "\n# This is the server logic for a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n#\n\nlibrary(shiny)\n\nshinyServer(function(input, output) {\n  mypws <- eventReactive(input$getpwsButton, {\n    PWS::getPWS(lat = input$lat, lon = input$lon, zipcode = input$zipcode, city = input$city, state = ifelse(input$state == \"\", NA, input$state), country = input$country, distance = input$distance)\n  })\n  \n  mycurrent <- eventReactive(input$getcurrentButton, {\n    PWS::getPWS(lat = input$lat, lon = input$lon, zipcode = input$zipcode, city = input$city, state = ifelse(input$state == \"\", NA, input$state), country = input$country, distance = input$distance)\n  })\n  \n  myweather <- eventReactive(input$getweatherButton, {\n    PWS::getPWSweather(PWS::getPWS(lat = input$lat, lon = input$lon, zipcode = input$zipcode, city = input$city, state = ifelse(input$state == \"\", NA, input$state), country = input$country, distance = input$distance), start = input$starttime, end = input$endtime)\n  })\n  \n  output$pwsPlot <- renderPlot({\n    if (is.null(mypws())) return()\n    PWS::plotPWS(mypws())\n  })\n  \n  output$currentPlot <- renderPlot({\n    if (is.null(mycurrent())) return()\n    PWS::plotPWScurrent(mycurrent())\n  })\n  \n  output$weatherPlot <- renderPlot({\n    if(is.null(myweather())) return()\n    PWS::plotPWSweather(myweather(), input$weather)\n  })\n})\n",
+    "created" : 1458754285276.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "196463891",
+    "id" : "F81E81B0",
+    "lastKnownWriteTime" : 1458772829,
+    "path" : "~/Documents/stat290/project/PWS/inst/shinyApp/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

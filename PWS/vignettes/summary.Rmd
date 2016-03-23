@@ -1,0 +1,65 @@
+---
+title: "Summary for Package 'PWS'"
+author: "Mengyi Gao, Xiang Zhang"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## 1. Introduction   
+The `PWS` package is aimed to extract, organize, visualize local weather data. Users can use the package to search for a location, compare the current weather from nearby personal weather stations (PWS), and visualize the microclimate weather change for the current day. It's targeted to personal users who is interested in weather data and microclimate patterns.   
+
+The data source of the package comes from the website [Wunderground Website](http://www.wunderground.com).  
+
+## 2. Locating and visualizing nearby PWS  
+To get started, assuming that you have the `PWS` package installed, you first need to load it:  
+```{r}
+library(PWS)
+```
+
+Then you can choose to search for an interested location based on latitude/longitude, zipcode or city by calling `getPWS()`. The `distance` argument specifies within what kilometers you want your PWS to be returned. This function returns an object of class `PWS` which contains the information of the original search location and the nearby PWS. For example:  
+```{r}
+myPWS <- getPWS(city = "Stanford", state = "CA", distance = 3)
+```
+
+You can further restrict the PWS returned to be within a specified distance measured in kilometers. Say:  
+```{r}
+myPWS <- subsetPWS(myPWS, distance = 2)
+```
+
+
+You can visualize the returned `PWS` object by calling  
+```{r, fig.width = 9, fig.height = 7}
+plotPWS(myPWS)
+```
+
+
+## 3. Visualizing current weather condition of nearby PWS  
+After locating the geographical PWS around the original search location, you may want to get the current weather condition. The `plotPWScurrent` function provides a way to visualize the current temperatures and weather of the original search location and the PWS contained in the `data` slot in an object of class `PWS`. For example, you can call:  
+```{r, fig.width = 9, fig.height = 7}
+plotPWScurrent(myPWS)
+```
+
+## 4. Imputing and visualizing recent weather condition of nearby PWS  
+User can also check the local weather condition via PWS data in past few hours.  
+Firstly, they can get the data and create a `PWSweather` object based on a given `PWS` object and a time interval by calling the `getPWSweather` function:
+
+```{r}
+myweather <- getPWSweather(myPWS, "3:00", "17:00")
+```
+
+Then user can check an aspect of the weather and get a data frame contains the data of each nearby station come with a time stamp, you can call:
+
+```{r}
+temp <- imputePWS(myweather, 'tempi') ## 'tempi' for temperature
+```
+
+Finally, user can visulize the weather condition by calling:
+
+```{r, fig.width = 9, fig.height = 7}
+plotPWSweather(myweather, "Temperature")
+plotPWSweather(myweather, "Humidity")
+```
